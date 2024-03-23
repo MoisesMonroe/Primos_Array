@@ -1,1 +1,90 @@
+<!DOCTYPE html>
 
+<!--
+    Nome:Edgar Lódula de Assis Nº:8     TURMA:3A
+        Nome:Guilherme Reis Nº12
+            Nome:Moises Monroe Nº26
+            -->
+
+            <html lang="pt-br">
+
+            <head>
+                <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Contador De Números Primos</title>
+
+
+                        <body>
+
+                            <div>
+                                    <label><h1>Digite um numero NATURAL</h1></label>
+                                            <input type="string" id="Numero1" autofocus>
+                                                    <button class="botão" onclick="recebeNumero()">Verificar</button>  <br><br>
+                                                        </div>  
+                                                            <canvas id="meuCanvas" width="1000px" height="1000px" style="border:1px solid #000000; background-color: white;"></canvas>
+
+                                                                <script>
+                                                                        const canvas = document.getElementById("meuCanvas");
+                                                                        const ctx = canvas.getContext('2d');
+
+
+                                                                        function recebeNumero() {
+                                                                            let qtdTotal = parseInt(document.getElementById("Numero1").value, 10);
+                                                                                let lista = listarPrimos(qtdTotal);
+                                                                                    Primos(lista); 
+                                                                                    }
+
+                                                                                    function listarPrimos(qtdTotal) {
+                                                                                        let qtd = 1;
+                                                                                            let lista = [2];
+                                                                                                for (c = 3; qtd < qtdTotal; c += 2) {
+                                                                                                        if (eprimo(c)) {
+                                                                                                                    lista.push(c);
+                                                                                                                                qtd++;
+                                                                                                                                        }
+                                                                                                                                            }
+                                                                                                                                                return lista;
+                                                                                                                                                }
+
+                                                                                                                                                function Primos(lista) {
+                                                                                                                                                    ctx.clearRect(0, 0, 1000, 5000); 
+                                                                                                                                                        let x = 0;                
+                                                                                                                                                            let N1 = parseInt(document.getElementById("Numero1").value, 10);    
+                                                                                                                                                                let y = 30;
+                                                                                                                                                                    ctx.font = "30px Arial";
+
+                                                                                                                                                                        for (let item = 0; item < lista.length; item++) {
+                                                                                                                                                                                let primo = lista[item].toString().concat(", "); 
+                                                                                                                                                                                        let tamanho = ctx.measureText(primo).width;
+                                                                                                                                                                                                if (x + tamanho > 1000) {
+                                                                                                                                                                                                            y += 50;
+                                                                                                                                                                                                                        x = 0;
+                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                        ctx.fillText(primo, x, y);
+                                                                                                                                                                                                                                                x += tamanho;
+                                                                                                                                                                                                                                                        console.log(primo);
+                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                            }
+
+
+                                                                                                                                                                                                                                                            function eprimo(N1) {
+                                                                                                                                                                                                                                                                let contador = 3;
+                                                                                                                                                                                                                                                                    if (N1 < 2 || (N1 % 2 == 0 && N1 != 2)) {
+                                                                                                                                                                                                                                                                            return false;
+                                                                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                                                                        while (contador <= Math.sqrt(N1)) {
+                                                                                                                                                                                                                                                                                                    if (N1 % contador == 0) {
+                                                                                                                                                                                                                                                                                                                    return false;
+                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                            contador = contador + 2;
+                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                            return true;
+
+                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                        </script>
+                                                                                                                                                                                                                                                                                                                                                                            </head>
+                                                                                                                                                                                                                                                                                                                                                                            </body>
+
+                                                                                                                                                                                                                                                                                                                                                                            </html>
